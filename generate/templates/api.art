@@ -1,0 +1,65 @@
+import { defHttp } from '/@/utils/http/axios';
+
+/**
+ * 分页查询<{remark}>列表
+ * @param params 查询参数
+ * @returns
+ */
+export function <{moduleName}><{className}>Page(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/page', params: data });
+}
+/**
+ * 查询<{remark}>列表
+ * @param params 查询参数
+ * @returns
+ */
+export function <{moduleName}><{className}>List(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/list', data });
+}<{if isTree}>
+/**
+ * 查询<{remark}>树
+ * @param params 查询参数
+ * @returns
+ */
+export function <{moduleName}><{className}>Tree(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/tree', data });
+}<{/if}>
+/**
+ * 添加<{remark}>
+ * @param data 参数
+ * @returns
+ */
+export function <{moduleName}><{className}>Add(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/save', data });
+}
+/**
+ * 编辑<{remark}>
+ * @param data 参数
+ * @returns
+ */
+export function <{moduleName}><{className}>Edit(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/update', data });
+}
+
+/**
+ * 删除<{remark}>
+ * @param data 参数
+ * @returns
+ */
+export function <{moduleName}><{className}>Del(data) {
+  return defHttp.post({ url: '/<{moduleName}>/<{tableCamelName}>/remove', data });
+}
+
+/**
+ * 保存或更新<{remark}>
+ * @param data 参数
+ * @param isUpdate 是否更新
+ * @returns
+ */
+export function <{moduleName}><{className}>SaveOrUpdate(data, isUpdate) {
+  if (isUpdate) {
+    return <{moduleName}><{className}>Edit(data);
+  } else {
+    return <{moduleName}><{className}>Add(data);
+  }
+}

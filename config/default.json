@@ -1,0 +1,66 @@
+{
+  "apiUrl": "https://lowcode.mldong.com/api/dev/schema/getByTableName",
+  "theme": "default",
+  "appId": "1740298710360973314",
+  "appSecret": "",
+  "templates": [
+    {
+      "name": "接口模板",
+      "selected": true,
+      "templateFile": "api.art",
+      "targetPath": "src/api/<{moduleName}>",
+      "targetFileName": "<{tableCamelName}>.ts"
+    },
+    {
+      "name": "首页模板",
+      "selected": true,
+      "templateFile": "index.art",
+      "targetPath": "src/views/<{moduleName}>/<{tableCamelName}>",
+      "targetFileName": "index.vue"
+    },
+    {
+      "name": "表单页",
+      "selected": true,
+      "templateFile": "add.art",
+      "targetPath": "src/views/<{moduleName}>/<{tableCamelName}>",
+      "targetFileName": "add.vue"
+    },
+    {
+      "name": "路由文件",
+      "selected": true,
+      "templateFile": "route.art",
+      "targetPath": "src/router/routes/modules",
+      "targetFileName": "<{schemaGroup.code}>.ts"
+    }
+  ],
+  "componentConfig": {
+    "Input": {
+      "component": "Input",
+      "propKeys": ["placeholder", "type", "maxlength"]
+    },
+    "ApiDict": {
+      "component": "ApiDict",
+      "propKeys": ["code","placeholder","dataType"]
+    },
+    "ApiSelect": {
+      "component": "ApiSelect",
+      "propKeys": ["api","valueField","labelField","placeholder"]
+    },
+    "ApiRadioGroup": {
+      "component": "ApiRadioGroup",
+      "propKeys": ["api","valueField","labelField","placeholder"]
+    },
+    "ApiCheckboxGroup": {
+      "component": "ApiCheckboxGroup",
+      "propKeys": ["api","valueField","labelField","placeholder"]
+    },
+    "ApiTreeSelect": {
+      "component": "ApiCheckboxGroup",
+      "propKeys": ["api","placeholder"]
+    },
+    "ApiCascader": {
+      "component": "ApiCascader",
+      "propKeys": ["api","valueField","labelField","placeholder","asyncFetchParamKey","numberToString"]
+    }
+  }
+}

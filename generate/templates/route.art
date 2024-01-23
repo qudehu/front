@@ -1,0 +1,37 @@
+import { AppRouteRecordRaw } from '/@/router/types';
+import { LAYOUT } from '/@/router/constant';
+const menu: AppRouteRecordRaw = {
+  name: '<{schemaGroup.code}>:manager',
+  path: '/<{schemaGroup.code}>/manager',
+  component: LAYOUT,
+  meta: {
+    title: '<{schemaGroup.name}>',
+    icon: 'icon-qietu-shezhi',
+    perms: ['admin', '<{schemaGroup.code}>:manager'],
+    orderNo: 100,
+    component: 'LAYOUT',
+  },
+  children: [<{each schemaGroup.schemaList}>
+    {
+      name: '<{$value.moduleName}>:<{$value.tableCamelName}>',
+      path: '/<{$value.moduleName}>/<{$value.tableCamelName}>/index',
+      component: () => import('/@/views/<{$value.moduleName}>/<{$value.tableCamelName}>/index.vue'),
+      meta: {
+        title: '<{$value.remark}>',
+        icon: 'ion:grid-outline',
+        orderNo: <{$index}>,
+        perms: ['admin', '<{$value.moduleName}>:<{$value.tableCamelName}>'],
+        component: '/<{$value.moduleName}>/<{$value.tableCamelName}>/index',
+        btns: {
+          '<{$value.moduleName}>:<{$value.tableCamelName}>:page': '分页查询<{$value.remark}>',
+          '<{$value.moduleName}>:<{$value.tableCamelName}>:detail': '查看<{$value.remark}>详情',
+          '<{$value.moduleName}>:<{$value.tableCamelName}>:save': '添加<{$value.remark}>',
+          '<{$value.moduleName}>:<{$value.tableCamelName}>:update': '修改<{$value.remark}>',
+          '<{$value.moduleName}>:<{$value.tableCamelName}>:remove': '删除<{$value.remark}>',
+        },
+      },
+    },<{/each}>
+  ],
+};
+
+export default menu;
